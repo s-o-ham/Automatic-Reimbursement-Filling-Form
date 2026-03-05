@@ -7,7 +7,7 @@ const fs = require('fs');
 const generateRoute = require('./routes/generate');
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 8080;
 
 // Ensure uploads directory exists
 const uploadsDir = path.join(__dirname, 'uploads');
