@@ -184,7 +184,7 @@ export default function App() {
                 ref={fileInputRef}
                 type="file"
                 id="file-input"
-                accept=".pdf,.doc,.docx,.csv,.png"
+                accept=".pdf,.doc,.docx,.csv,.png,.jpg,.jpeg"
                 multiple
                 onChange={onFileChange}
                 className="hidden-input"
