@@ -1,11 +1,11 @@
 import React, { useState, useRef, useCallback } from 'react'
 import './App.css'
 
-const ACCEPTED_TYPES = ['.pdf', '.doc', '.docx', '.csv', '.png']
+const ACCEPTED_TYPES = ['.pdf', '.doc', '.docx', '.csv', '.png', '.jpg', '.jpeg']
 
 function getFileIcon(filename) {
   const ext = filename?.split('.').pop()?.toLowerCase()
-  return { pdf: '📄', doc: '📝', docx: '📝', csv: '📊', png: '🖼️' }[ext] || '📁'
+  return { pdf: '📄', doc: '📝', docx: '📝', csv: '📊', png: '🖼️', jpg: '🖼️', jpeg: '🖼️' }[ext] || '📁'
 }
 
 function formatFileSize(bytes) {
@@ -17,7 +17,7 @@ function formatFileSize(bytes) {
 function validateFile(f) {
   const ext = '.' + f.name.split('.').pop().toLowerCase()
   if (!ACCEPTED_TYPES.includes(ext))
-    return `"${f.name}" is not a supported type. Allowed: PDF, DOC, DOCX, CSV.`
+    return `"${f.name}" is not a supported type. Allowed: PDF, DOC, DOCX, CSV, PNG, JPG.`
   if (f.size > 10 * 1024 * 1024)
     return `"${f.name}" exceeds 10 MB.`
   return null
@@ -177,7 +177,7 @@ export default function App() {
                   {isDragging ? 'Drop files here!' : entries.length === 0 ? 'Drag & drop your files' : 'Add more files'}
                 </p>
                 <p className="drop-subtitle">or <span className="drop-link">browse files</span></p>
-                <p className="drop-types">PDF, DOC, DOCX, CSV, PNG · Max 10 MB each · Up to 10 files</p>
+                <p className="drop-types">PDF, DOC, DOCX, CSV, PNG, JPG · Max 10 MB each · Up to 10 files</p>
               </div>
 
               <input
