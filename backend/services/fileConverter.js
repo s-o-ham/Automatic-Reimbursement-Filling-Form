@@ -24,9 +24,12 @@ async function convertToImages(filePath, originalName) {
             return await docToImages(filePath);
         case '.csv':
             return [await csvToImage(filePath)];
-        case '.png': {
+        case '.png':
+        case '.jpg':
+        case '.jpeg': {
             // Already an image — copy with a unique name so cleanup is uniform
-            const dest = path.join(UPLOADS_DIR, `img_${uuidv4()}.png`);
+            const imgExt = ext === '.png' ? '.png' : '.jpg';
+            const dest = path.join(UPLOADS_DIR, `img_${uuidv4()}${imgExt}`);
             fs.copyFileSync(filePath, dest);
             return [dest];
         }

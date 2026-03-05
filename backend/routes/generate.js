@@ -9,7 +9,7 @@ const { generatePDF } = require('../services/pdfGenerator');
 
 const router = express.Router();
 
-const ALLOWED_EXTENSIONS = ['.pdf', '.doc', '.docx', '.csv', '.png'];
+const ALLOWED_EXTENSIONS = ['.pdf', '.doc', '.docx', '.csv', '.png', '.jpg', '.jpeg'];
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => cb(null, path.join(__dirname, '../uploads')),
@@ -27,7 +27,7 @@ const upload = multer({
         if (!ALLOWED_EXTENSIONS.includes(ext)) {
             return cb(
                 Object.assign(
-                    new Error(`Unsupported file type "${ext}". Allowed: pdf, doc, docx, csv`),
+                    new Error(`Unsupported file type "${ext}". Allowed: pdf, doc, docx, csv, png, jpg`),
                     { status: 400 }
                 )
             );
